@@ -1,12 +1,7 @@
 
 import React from 'react';
+import { Cta11 } from '@/components/ui/cta11';
 import { Mail, Phone, Linkedin, Github } from 'lucide-react';
-
-interface ContactLink {
-  icon: React.ReactNode;
-  label: string;
-  href: string;
-}
 
 interface ContactProps {
   email: string;
@@ -16,7 +11,22 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ email, phone, linkedin, github }) => {
-  const contactLinks: ContactLink[] = [
+  const contactData = {
+    heading: "Get in Touch",
+    description: "Feel free to reach out through any of the channels below. I'm always open to new opportunities and connections.",
+    buttons: {
+      primary: {
+        text: "Send Email",
+        url: `mailto:${email}`,
+      },
+      secondary: {
+        text: "Visit LinkedIn",
+        url: linkedin,
+      },
+    },
+  };
+
+  const contactLinks = [
     {
       icon: <Mail className="w-5 h-5" />,
       label: email,
@@ -42,7 +52,8 @@ const Contact: React.FC<ContactProps> = ({ email, phone, linkedin, github }) => 
   return (
     <section className="mb-12" id="contact">
       <h2 className="text-xl font-bold mb-6">Contact</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
         {contactLinks.map((link, index) => (
           <a
             key={index}
@@ -56,6 +67,8 @@ const Contact: React.FC<ContactProps> = ({ email, phone, linkedin, github }) => 
           </a>
         ))}
       </div>
+      
+      <Cta11 {...contactData} />
     </section>
   );
 };
