@@ -8,6 +8,9 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
+// Install embla-carousel-react
+<lov-add-dependency>embla-carousel-react@latest</lov-add-dependency>
+
 const queryClient = new QueryClient();
 
 const App = () => (

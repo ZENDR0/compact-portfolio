@@ -16,36 +16,42 @@ const Index = () => {
       title: 'Bitcoin Protocol Engineer',
       period: 'May 2021 - Oct 2022',
       logo: '/atomic.svg',
+      logoClass: 'organization-logo'
     },
     {
       company: 'Shopify',
       title: 'Software Engineer',
       period: 'January 2021 - April 2021',
       logo: '/shopify.svg',
+      logoClass: 'organization-logo'
     },
     {
       company: 'Nesto',
       title: 'Software Engineer',
       period: 'January 2020 - April 2020',
       logo: '/nesto.svg',
+      logoClass: 'organization-logo'
     },
     {
       company: 'Sphere',
       title: 'Software Engineer',
       period: 'January 2019 - April 2019',
       logo: '/sphere.svg',
+      logoClass: 'organization-logo'
     },
     {
       company: 'Lime',
       title: 'Software Engineer',
       period: 'January 2018 - April 2018',
       logo: '/lime.svg',
+      logoClass: 'organization-logo'
     },
     {
       company: 'Micro Media',
       title: 'Software Engineer',
       period: 'May 2017 - August 2017',
       logo: '/micro.svg',
+      logoClass: 'organization-logo'
     },
   ];
 
@@ -55,24 +61,28 @@ const Index = () => {
       degree: 'S3, n4, n5',
       period: '2023 - 2024',
       logo: '/buildspace.svg',
+      logoClass: 'organization-logo'
     },
     {
       institution: 'University of Waterloo',
       degree: "Bachelor's Degree of Computer Science (BCS)",
       period: '2016 - 2021',
       logo: '/waterloo.svg',
+      logoClass: 'organization-logo'
     },
     {
       institution: 'Wilfrid Laurier University',
       degree: 'Bachelor of Business Administration (BBA)',
       period: '2016 - 2021',
       logo: '/laurier.svg',
+      logoClass: 'organization-logo'
     },
     {
       institution: 'International Baccalaureate',
       degree: 'IB Diploma',
       period: '2012 - 2016',
       logo: '/ib.svg',
+      logoClass: 'organization-logo'
     },
   ];
 
@@ -97,6 +107,26 @@ const Index = () => {
       description: 'CSS and automated UI components for rapid development',
       period: 'June 2022 - Present',
       image: 'https://placehold.co/600x400/4ecdc4/fff',
+      links: [
+        { icon: '/github.svg', url: 'https://github.com' },
+        { icon: '/link.svg', url: 'https://example.com' }
+      ]
+    },
+    {
+      title: 'Portfolio Builder',
+      description: 'A drag-and-drop portfolio website builder for developers',
+      period: 'May 2023 - Dec 2023',
+      image: 'https://placehold.co/600x400/8a2be2/fff',
+      links: [
+        { icon: '/github.svg', url: 'https://github.com' },
+        { icon: '/link.svg', url: 'https://example.com' }
+      ]
+    },
+    {
+      title: 'Code Mentor',
+      description: 'Platform connecting beginner coders with experienced mentors',
+      period: 'Jan 2023 - April 2023',
+      image: 'https://placehold.co/600x400/ff8c00/fff',
       links: [
         { icon: '/github.svg', url: 'https://github.com' },
         { icon: '/link.svg', url: 'https://example.com' }
