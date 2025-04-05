@@ -1,22 +1,20 @@
 
-import React from 'react';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from "@/components/ui/carousel";
+import React, { useRef } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
+
+interface ProjectLink {
+  icon: string;
+  url: string;
+}
 
 interface Project {
   title: string;
   description: string;
   period: string;
   image: string;
-  links?: {
-    icon: string;
-    url: string;
-  }[];
+  links: ProjectLink[];
 }
 
 interface ProjectsProps {
@@ -24,55 +22,84 @@ interface ProjectsProps {
 }
 
 const Projects: React.FC<ProjectsProps> = ({ projects }) => {
-  return (
-    <section className="mb-12">
-      <h2 className="text-3xl font-bold text-center mb-4">My Projects</h2>
-      <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
-        I've worked on a variety of projects, from simple websites to complex web applications. 
-        Here are a few of my favorites.
-      </p>
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const { current } = scrollRef;
+      const scrollAmount = current.clientWidth * (isMobile ? 0.8 : 0.5);
       
-      <div className="relative px-4 md:px-10">
-        <Carousel>
-          <CarouselContent className="-ml-2 md:-ml-4">
-            {projects.map((project, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2">
-                <div className="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden h-full">
-                  <div className="h-48 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-bold text-xl">{project.title}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">{project.period}</p>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">{project.description}</p>
-                    
-                    {project.links && (
-                      <div className="flex gap-2">
-                        {project.links.map((link, i) => (
-                          <a 
-                            key={i}
-                            href={link.url}
-                            className="w-6 h-6 flex items-center justify-center"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <img src={link.icon} alt="link" className="w-4 h-4" />
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+      if (direction === 'left') {
+        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else {
+        current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  return (
+    <section className="mb-12 relative">
+      <h2 className="text-xl font-bold mb-6">Projects</h2>
+      
+      <div className="relative">
+        <button 
+          onClick={() => scroll('left')} 
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full shadow-md"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        
+        <div 
+          className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory gap-4 pb-4" 
+          ref={scrollRef}
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {projects.map((project, index) => (
+            <Card 
+              key={index} 
+              className="min-w-[280px] sm:min-w-[320px] max-w-[400px] flex-shrink-0 snap-start"
+            >
+              <div className="h-48 overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <CardContent className="p-4">
+                <h3 className="font-bold text-lg">{project.title}</h3>
+                <p className="text-sm text-gray-600 mb-2">{project.period}</p>
+                <p className="text-sm mb-4">{project.description}</p>
+                <div className="flex gap-2">
+                  {project.links.map((link, linkIndex) => (
+                    <a
+                      key={linkIndex}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src={link.icon}
+                        alt="Link"
+                        className="w-6 h-6 opacity-70 hover:opacity-100 transition-opacity"
+                      />
+                    </a>
+                  ))}
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-0 md:-left-5" />
-          <CarouselNext className="right-0 md:-right-5" />
-        </Carousel>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        
+        <button 
+          onClick={() => scroll('right')} 
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm p-2 rounded-full shadow-md"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
       </div>
     </section>
   );

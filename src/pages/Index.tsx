@@ -6,6 +6,7 @@ import WorkExperience from '../components/WorkExperience';
 import Education from '../components/Education';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
+import Contact from '../components/Contact';
 import { DockMenu } from '../components/DockMenu';
 
 const Index = () => {
@@ -135,7 +136,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-12 animate-fade-in">
+    <div className="max-w-3xl mx-auto px-4 py-8 sm:py-12 animate-fade-in">
       <Header 
         name="John Doe" 
         title="Software Engineer turned Entrepreneur."
@@ -157,6 +158,13 @@ const Index = () => {
       <Skills skills={skills} />
       
       <Projects projects={projects} />
+      
+      <Contact 
+        email="johndoe@example.com"
+        phone="+1 (555) 123-4567"
+        linkedin="https://linkedin.com/in/johndoe"
+        github="https://github.com/johndoe"
+      />
       
       <DockMenu />
     </div>
