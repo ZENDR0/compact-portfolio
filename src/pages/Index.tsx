@@ -6,6 +6,7 @@ import WorkExperience from '../components/WorkExperience';
 import Education from '../components/Education';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
+import { DockMenu } from '../components/DockMenu';
 
 const Index = () => {
   // Sample data for the portfolio
@@ -126,6 +127,8 @@ const Index = () => {
       <Skills skills={skills} />
       
       <Projects projects={projects} />
+      
+      <DockMenu />
     </div>
   );
 };
