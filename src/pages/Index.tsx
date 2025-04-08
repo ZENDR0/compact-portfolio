@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '../components/Header';
 import About from '../components/About';
@@ -7,7 +6,9 @@ import Education from '../components/Education';
 import Skills from '../components/Skills';
 import Projects from '../components/Projects';
 import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 import { DockMenu } from '../components/DockMenu';
+import { Cta11 } from '@/components/ui/cta11';
 
 const Index = () => {
   // Sample data for the portfolio
@@ -159,12 +160,22 @@ const Index = () => {
       
       <Projects projects={projects} />
       
-      <Contact 
-        email="johndoe@example.com"
-        phone="+1 (555) 123-4567"
-        linkedin="https://linkedin.com/in/johndoe"
-        github="https://github.com/johndoe"
+      <Cta11 
+        heading="Let's work together"
+        description="Feel free to reach out if you're looking for a developer, have a question, or just want to connect."
+        buttons={{
+          primary: {
+            text: "Contact Me",
+            url: "mailto:johndoe@example.com"
+          },
+          secondary: {
+            text: "View Resume",
+            url: "/resume.pdf"
+          }
+        }}
       />
+      
+      <Footer />
       
       <DockMenu />
     </div>

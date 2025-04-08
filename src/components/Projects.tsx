@@ -30,7 +30,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
     <section className="mb-12 relative">
       <h2 className="text-xl font-bold mb-6">Projects</h2>
       
-      <div className="relative w-full px-4">
+      <div className="relative w-full px-6">
         <Carousel>
           <CarouselContent className="-ml-4">
             {projects.map((project, index) => (
@@ -69,7 +69,7 @@ const Projects: React.FC<ProjectsProps> = ({ projects }) => {
             ))}
           </CarouselContent>
           <CarouselNavigation 
-            className="absolute -bottom-10 left-auto top-auto w-full justify-end gap-2" 
+            className="absolute top-1/2 left-0 -translate-y-1/2 w-full justify-between px-4 py-2" 
             classNameButton="bg-zinc-800 *:stroke-zinc-50 dark:bg-zinc-200 dark:*:stroke-zinc-800"
             alwaysShow
           />
